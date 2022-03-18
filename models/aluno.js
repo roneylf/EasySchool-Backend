@@ -13,6 +13,12 @@ const Aluno = sequelize.define('Aluno',{
         type:Sequelize.STRING,
         allowNull:true,
     },
+  timestamps: false,
+
+  createdAt: false,
+
+  updatedAt: false,
+
 
 },{
     freezeTableName:true,

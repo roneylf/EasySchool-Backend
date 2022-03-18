@@ -21,6 +21,11 @@ const CursoAluno = sequelize.define(
       type: Sequelize.INTEGER,
       allowNull: false,
     },
+    timestamps: false,
+
+    createdAt: false,
+  
+    updatedAt: false,
   },
   {
     freezeTableName: true,
