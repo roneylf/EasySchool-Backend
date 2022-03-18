@@ -47,6 +47,6 @@ app.use((req,res) => {
         message:"Internal server Error"
     })
 })
-app.listen('0.0.0.0, process.env.PORT | 80,() => {
+app.listen('0.0.0.0', process.env.PORT | 80,() => {
     console.log('Server Running')
 })
