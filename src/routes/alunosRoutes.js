@@ -6,7 +6,7 @@ const alunosController = new AlunoController();
 
 alunosRoutes.get('/alunos',alunosController.get);
 alunosRoutes.post('/alunos',alunosController.post)
-alunosRoutes.put('/alunos/:id',alunosController.put)
-alunosRoutes.delete('/alunos/:id',alunosController.delete)
+alunosRoutes.put('/alunos/:codigo',alunosController.put)
+alunosRoutes.delete('/alunos/:codigo',alunosController.delete)
 
 export { alunosRoutes } 

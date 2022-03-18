@@ -1,7 +1,7 @@
 import { Curso } from "../../models/curso.js";
 
 import { HttpError } from "../helpers/HttpError.js";
-
+import { CursoAluno} from "../../models/curso_aluno.js";
 
 class CursoController {
   async get(req, res, next) {
@@ -51,20 +51,28 @@ class CursoController {
     }
   }
   async put(req, res, next) {
-    const { codigo } = req.params;
+    try {
+      const { codigo } = req.params;
 
-    const { nome, ementa } = req.body;
+      const { descricao, ementa } = req.body;
 
-    let toUpdate = {};
-    if (nome) toUpdate.nome = nome;
-    if (ementa) toUpdate.ementa = ementa;
+      let toUpdate = {};
+      if (descricao) toUpdate.descricao = descricao;
+      if (ementa) toUpdate.ementa = ementa;
 
-    const curso = await Curso.update(toUpdate, { where: { codigo: codigo } });
-    return res.json({
-      message: "curso updated",
-      success: true,
-      codigo: curso.codigo,
-    });
+      const curso = await Curso.update(toUpdate, { where: { codigo: codigo } });
+      return res.json({
+        message: "curso updated",
+        success: true,
+        codigo: curso.codigo,
+      });
+    } catch (error) {
+      const httpError = new HttpError();
+      httpError.message = error.message;
+      httpError.status = 404;
+      req.error = httpError;
+      next();
+    }
   }
   async delete(req, res, next) {
     const toDeletecurso = await Curso.findOne({
@@ -91,7 +99,6 @@ class CursoController {
         req.error = httpError;
         next();
       } else {
-
         await Curso.destroy({
           where: {
             codigo: req.params.codigo,

@@ -1,6 +1,6 @@
 import { Aluno } from "../../models/aluno.js";
 import { HttpError } from "../helpers/HttpError.js";
-
+import {CursoAluno} from '../../models/curso_aluno.js'
 class AlunoController {
   async get(req, res, next) {
     try {

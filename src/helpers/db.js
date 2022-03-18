@@ -11,6 +11,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
     },
   },
   define: {
+    timestamps: false,
     defaultScope: {
       attributes: {
         exclude: ["createdAt", "updatedAt"],

@@ -18,7 +18,6 @@ const Curso = sequelize.define(
       type: Sequelize.STRING,
       allowNull: true,
     },
-    timestamps: false,
 
     createdAt: false,
 
