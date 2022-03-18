@@ -1,5 +1,6 @@
 import { sequelize } from "../src/helpers/db.js";
 import { Sequelize } from "sequelize";
+import { Aluno } from "./aluno.js";
 
 const Curso = sequelize.define(
   "Curso",

@@ -6,7 +6,9 @@ import { CursoAluno} from "../../models/curso_aluno.js";
 class CursoController {
   async get(req, res, next) {
     try {
-      const cursos = await Curso.findAll();
+      const cursos = await Curso.findAll({
+        include: ['alunos'],
+      });
       return res.json(cursos);
     } catch (e) {
       const httpError = new HttpError();
