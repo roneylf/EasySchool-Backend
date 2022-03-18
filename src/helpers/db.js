@@ -13,6 +13,13 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
             required: true
         },
     },
+    define: {
+        defaultScope: {
+            attributes: {
+                exclude: ['createdAt', 'updatedAt']
+            }
+        }
+    }
 });
 
 
