@@ -6,6 +6,12 @@ import { Curso } from "./curso.js";
 const CursoAluno = sequelize.define(
   "Curso_Aluno",
   {
+    codigo:{
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true
+  },
    
     codigo_aluno: {
       type: Sequelize.INTEGER,
@@ -31,4 +37,7 @@ CursoAluno.belongsTo(Aluno, {
   foreignKey: "codigo_aluno",
 });
 
+CursoAluno.removeAttribute("id");
+CursoAluno.removeAttribute("createdAt");
+CursoAluno.removeAttribute("updatedAt");
 export { CursoAluno };
