@@ -99,6 +99,35 @@ class CursoAlunoController {
 
     }
   }
+
+  async deleteWhereCods(req, res, next) {
+    const { codigo_aluno, codigo_curso } = req.body;
+
+    const toDeleteCursoAluno = await CursoAluno.findOne({
+      where: {
+        codigo_aluno: codigo_aluno,
+        codigo_curso: codigo_curso,
+      },
+    });
+    if (!toDeleteCursoAluno) {
+      const httpError = new HttpError();
+      httpError.message = "CursoAluno not found";
+      httpError.status = 404;
+      req.error = httpError;
+      next();
+    } else {
+      await CursoAluno.destroy({
+        where: {
+          codigo: req.params.codigo,
+        },
+      });
+      return res.json({
+        message: "user deleted",
+        success: true,
+      });
+
+    }
+  }
 }
 
 export { CursoAlunoController };

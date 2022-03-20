@@ -8,5 +8,6 @@ cursoAlunoRoutes.get('/cursoalunos',cursoAlunoController.get);
 cursoAlunoRoutes.post('/cursoalunos',cursoAlunoController.post);
 cursoAlunoRoutes.put('/cursoalunos/:codigo',cursoAlunoController.put)
 cursoAlunoRoutes.delete('/cursoalunos/:codigo',cursoAlunoController.delete)
+cursoAlunoRoutes.delete('/cursoalunos',cursoAlunoController.deleteWhereCods)
 
 export { cursoAlunoRoutes } 
